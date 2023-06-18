@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Models.Cidade>
+
+<div class="text-center">
+    <h1 class="display-4">Cidades</h1>
+
+    @ViewBag.MensagemGravacao<br />
+    
+    <div style="text-align: left">
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+        Id: <input id="txtIdCidade" name="IdCidade" /><br/>   
+        Nome: <input id="Nome" name="Nome" /><br />
+        População: <input id="txtPopulacao" name="Populacao" /><br />
+        Estado: <select id="selEstado" name="Estado">
+            <option>11</option>
+            <option>31</option>
+        </select><br/>
+        Pais: <select id="selPais" name="Pais">
+            <option>55</option>            
+        </select><br />
+        <input type="submit" name = "Submit" id="btnSubmit" value = "Gravar" />
+    </form>
+
+    <hr />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Populacao)
+                </th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Populacao)
+                    </td>                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
